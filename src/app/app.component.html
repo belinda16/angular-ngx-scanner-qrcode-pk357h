@@ -1,0 +1,35 @@
+<div [style.padding.px]="20">
+  <h1>ngx-scanner-qrcode</h1>
+
+  <!-- ngx-scanner-qrcode -->
+  <ngx-scanner-qrcode
+    #action="scanner"
+    (data)="getData($event)"
+    (error)="onError($event)"
+  ></ngx-scanner-qrcode>
+
+  <!-- Loading -->
+  <p *ngIf="action.isLoading">⌛ Loading video...</p>
+
+  <!-- toggleCamera -->
+  <button
+    (click)="action.toggleCamera()"
+    class="btn"
+    [class.btn-info]="!action.isStart"
+    [class.btn-warning]="action.isStart"
+    [disabled]="action.isLoading"
+  >
+    <img
+      *ngIf="!action.isStart"
+      src="https://img.icons8.com/ios/50/000000/no-camera--v2.png"
+      width="30px"
+    />
+    <img
+      *ngIf="action.isStart"
+      src="https://img.icons8.com/ios/50/000000/no-camera--v1.png"
+      width="30px"
+    />
+  </button>
+
+  <h5>Author: DaiDH</h5>
+</div>
